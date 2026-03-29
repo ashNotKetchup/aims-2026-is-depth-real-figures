@@ -20,6 +20,11 @@ df = pd.read_csv("responsible_ai_models.csv")
 # Filter out models that don't output audio
 df = df[df['Output Type'].str.contains('Audio', na=False, case=False)]
 
+# Filter out spectrogram models
+rep_col = 'Representation Class' if 'Representation Class' in df.columns else 'Representation'
+if rep_col in df.columns:
+    df = df[~df[rep_col].astype(str).str.contains('spectrogram', case=False, na=False)]
+
 # Remove MIDI from the Output Type column to drop the MIDI output node
 df['Output Type'] = df['Output Type'].str.replace(r'(?i)midi', '', regex=True)
 df['Output Type'] = df['Output Type'].str.replace(r'/', ',', regex=True)
@@ -112,24 +117,55 @@ links['target'] = links['target'].map(node_dict)
 labels = [str(node).split(" (")[0] for node in nodes]
 labels = ["" if l == "N/S" else l for l in labels]
 
+# Use bright colors for nodes instead of monochromatic theme
+bright_colors = [
+    '#EF553B', '#00CC96', '#AB63FA', '#FFA15A', '#19D3F3', 
+    '#FF6692', '#B6E880', '#FF97FF', '#FECB52', '#1f77b4', 
+    '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b'
+]
+node_colors = [bright_colors[i % len(bright_colors)] for i in range(len(labels))]
+
+# Create matching transparent colors for links based on their source node
+link_colors = []
+for src in links['source']:
+    hex_c = node_colors[src].lstrip('#')
+    link_colors.append(f"rgba({int(hex_c[0:2], 16)}, {int(hex_c[2:4], 16)}, {int(hex_c[4:6], 16)}, 0.4)")
+
 # Create and show Sankey diagram
 fig = go.Figure(data=[go.Sankey(
     node = dict(
-      pad = 15,
-      thickness = 20,
-      line = dict(color = "black", width = 0.5),
-      label = labels
+      pad = 35,
+      thickness = 25,
+      line = dict(color = "white", width = 0.5),
+      label = labels,
+      color = node_colors
     ),
     link = dict(
       source = links['source'],
       target = links['target'],
-      value = links['value']
+      value = links['value'],
+      color = link_colors
     ))])
 
 title_path = " -> ".join([c.replace('Type', '').strip() for c in cols])
 fig.update_layout(
-    title_text=f"Model Modes Sankey Diagram<br>{title_path}", 
-    font_size=10
+    height=1200,
+    title=dict(
+        text=f"<b>Representation and Control Strategies for Generative Audio Models</b>",
+        x=0.5,
+        y=0.98,
+        font=dict(size=36, color="#21386a", family="sans-serif")
+    ),
+    font=dict(size=20, family="sans-serif", color="black"),
+    margin=dict(t=220, l=50, r=50, b=50),
+    plot_bgcolor='white',
+    paper_bgcolor='white',
+    annotations=[
+        dict(x=0.0, y=1.1, text='<b>Input Type</b>', showarrow=False, xref='paper', yref='paper', xanchor='left', font=dict(size=24, color="#21386a")),
+        dict(x=0.33, y=1.1, text='<b>Internal Representation Type</b>', showarrow=False, xref='paper', yref='paper', xanchor='center', font=dict(size=24, color="#21386a")),
+        dict(x=0.67, y=1.1, text='<b>Additional Conditioning, Controls<br>or Latent Structure</b>', showarrow=False, xref='paper', yref='paper', xanchor='center', font=dict(size=24, color="#21386a")),
+        dict(x=1.0, y=1.1, text='<b>Output Type</b>', showarrow=False, xref='paper', yref='paper', xanchor='right', font=dict(size=24, color="#21386a"))
+    ]
 )
 fig.show()
 
