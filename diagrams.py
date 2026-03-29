@@ -123,7 +123,12 @@ bright_colors = [
     '#FF6692', '#B6E880', '#FF97FF', '#FECB52', '#1f77b4', 
     '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b'
 ]
-node_colors = [bright_colors[i % len(bright_colors)] for i in range(len(labels))]
+node_colors = []
+for i, label in enumerate(labels):
+    if label == "" or label.lower() in ["none", "unknown"]:
+        node_colors.append('#D3D3D3')  # Light gray for unknown/none
+    else:
+        node_colors.append(bright_colors[i % len(bright_colors)])
 
 # Create matching transparent colors for links based on their source node
 link_colors = []
