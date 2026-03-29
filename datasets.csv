@@ -1,0 +1,18 @@
+Dataset Name,Data Formats,Description
+AudioCaps,Audio/Text,Audio snippets with text captions
+NSynth,Audio/Metadata,Musical notes with pitch, velocity and timbre annotations
+MAESTRO,Audio/MIDI,Paired audio and MIDI of classical piano performances
+Unlocked Recordings,Audio,Public domain audio recordings
+xeno-canto.org,Audio/Metadata,Bird sounds and field recordings
+glitch.cool,Audio,Electronic music samples and stems
+songaday.world,Audio/MIDI,Daily song creations
+The Piano-e-Competition,MIDI,Piano performance MIDI sequences
+Groove MIDI / Expanded Groove MIDI,MIDI/Audio,Drum performances in MIDI and audio formats
+Lakh MIDI,MIDI,Large collection of multitrack MIDI files
+MusicCaps,Audio/Text,Music tracks paired with rich text descriptions
+AudioSet,Audio/Labels,Audio excerpts from YouTube videos with categorical labels
+IILGuitarTimbre,Audio,Guitar timbre audio recordings
+CSTR VCTK Corpus,Audio/Text,English speech corpus
+The Future Sample Pack,MIDI,MIDI sequences/electronic beats
+freesound.org,Audio/Metadata,Collaborative database of audio snippets and samples
+freemusicarchive.org,Audio,Library of free and legal music tracks

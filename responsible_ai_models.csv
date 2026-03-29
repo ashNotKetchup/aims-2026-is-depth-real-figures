@@ -1,0 +1,29 @@
+Name,Year,Website,Input Type,Output Type,Output Length,Real Time,AI Technique,License,Free,Open Source,Checkpoints,Fine-tune,Train From Scratch,Training Dataset,Representation Class,Representation Subclass,Conditioning & Controls,notes
+Aimi,2023,aimi.fm,"None, Text",Audio,Endless,Yes,Unknown,Proprietary,No,No,No,No,No,Not disclosed,Unknown,Unknown,Video,
+AIVA,2019,aiva.ai,"Audio, MIDI","Audio, MIDI",5min30s,No,Unknown,Proprietary,Yes/No,No,No,No,No,Not disclosed,Unknown,Unknown,"Audio, MIDI",
+Audialab,2021,audialab.com,Text,Audio,Short,Yes,Unknown,Proprietary,No,No,No,No,No,"Teacher model not disclosed, AudioCaps dataset (Kim et al., 2019) for AudioLCM model",Unknown,Unknown,Genre,
+Loudly,2023,loudly.com,None,Audio,7min,No,Unknown,Proprietary,Yes/No,No,No,No,No,Not disclosed,Unknown,Unknown,"Energy, Genre, Key, Structure, Tempo",
+MAGNet,2019,github.com/Louismac/MAGNet,"Audio, None",Audio,Input Length,Yes,LSTM,BSD 3-Clause,Yes,Yes,No,No,Yes,Not disclosed,Unknown,Unknown,"Audio Features, MIDI","Not conditionned, but like the other lstm rnn models, it can be easily conditionned"
+Mubert,2016,mubert.com,Text,Audio,25min,No,Unknown,Proprietary,Yes/No,No,~,No,No,Not disclosed,Unknown,Unknown,"Genre, Mood, Image",
+MusicGen,2023,ai.honu.io/papers/musicgen,Text,Audio,30s,No,Transformer,MIT/CC-BY-NC,Yes,Yes,10 Models,Yes,Yes,NSynth Dataset; Others not disclosed,Unknown,Unknown,"Melody Chroma, Text",In the space of EnCodec discrete audio tokens
+Amadeus Code,2019,amadeuscode.com,None,"Audio, MIDI",Variable,No,Unknown,Proprietary,Yes/No,No,No,No,No,Not disclosed,Unknown,Unknown,Genre,
+AudioLCM,2023,github.com/Text-to-Audio/AudioLCM,Text,Audio,Variable,Yes,Latent Consistency Model (LCM),MIT,Yes,Yes,Yes,Yes,~,Yes (Paid features),Unknown,Unknown,None,text-conditioned audio diffusion in the latent space of an ausio codec
+Boomy,2019,boomy.com,"Audio, Text",Audio,mins/track,No,Unknown,Proprietary,No,No,No,No,No,Not disclosed,Unknown,Unknown,Unknown,
+Dance Diffusion,2022,github.com/harmonai-org/sample-generator,Audio,Audio,Variable,No,Latent Diffusion,MIT,Yes,Yes,Yes,Yes,Yes,"glitch.cool, songaday.world, MAESTRO, Unlocked Recordings, xeno-canto.org",Latent Space Representation,Unknown,Unknown,
+Magenta Continue,2018,magenta.tensorflow.org/studio#continue,MIDI,MIDI,32 Bars,No,LSTM,Apache 2.0,Yes,Yes,Yes,Yes,Yes,Not disclosed; PerformanceRNN: The Piano-e-Competition dataset,Unknown,Unknown,"Temperature, Variation",
+Magenta Drumify,2018,magenta.tensorflow.org/studio#drumify,MIDI,MIDI,Input Length,No,LSTM,Apache 2.0,Yes,Yes,Yes,Yes,Yes,"Expanded Groove MIDI, Groove MIDI",Unknown,Unknown,"Temperature, Variation",
+Magenta Generate,2018,magenta.tensorflow.org,None,MIDI,4 Bars,No,VAE,Apache 2.0,Yes,Yes,Yes,Yes,Yes,"NSynth, MAESTRO, Lakh MIDI",VAE Latent Space,Unknown,"Temperature, Variation",
+MusicLM,2023,google-research.github.io/seanet/musiclm/examples/,Text,Audio,30s,No,Transformer,Proprietary,Yes,No,No,No,No,MusicCaps; AudioSet,Hidden State,"textual, semantic, and acoustic",Unknown,"Embedding contains textual, semantic, and acoustic tokens"
+RAVE,2022,acids-ircam.github.io/RAVE/,Audio,Audio,Variable,Yes,VAE,MIT,Yes,Yes,Yes,Yes,Yes,"Can train on custom datasets, e.g. IILGuitarTimbre, CSTR VCTK Corpus",Latent Space Representation,Timbre Latent Space,Timbre,VAE Latent Space (Regularized on: Timbre and non-semantic features)
+R-VAE,2022,https://vigliensoni.com/portfolio/30-vigliensoni22live/,MIDI,MIDI,2 Bars,Near,VAE,GPLv3,Yes,Yes,No,No,No,The Future Sample Pack,Latent Space Representation,Complexity/Noise,None,
+SampleRNN,2016,github.com/soroushmehr/sampleRNN_ICLR2017,"Audio, None",Audio,Variable,No,Hierarchical Recurrent Neural Network (RNN),MIT,Yes,Yes,Community-based,~,Yes,Not disclosed,Hidden State,Hierarchy Of Embeddings,"Emotion Label, Genre, Linguistic Features, Speaker Id",
+Stable Audio,2023,stability.ai/news/introducing-stable-audio-open,"Audio, Text",Audio,3min,No,Diffusion,~,Yes,Yes,Yes,Yes,Yes,freesound.org; freemusicarchive.org,Latent Space Representation,"Joint Embedding Space, Text, Audio Autoencoder","Text, Audio ",
+Riffusion,2022,riffusion.com/,Text,Audio,3min,No,Diffusion,MIT,Yes,Yes,Yes,~,No,Not disclosed,Spectrograms,Unknown,Unknown,
+Soundful,2023,soundful.com/,Text,"Audio, MIDI",2min30s,No,Unknown,Proprietary,Yes/No,No,No,No,No,Not specified,Unknown,Unknown,Metadata ,
+Soundraw,2024,soundraw.io/,None,Audio,5m,No,Unknown,Proprietary,Yes/No,No,No,No,No,Not disclosed,Unknown,Unknown,Metadata,
+Splash,2023,splashmusic.com/,Text,Audio,3m,No,Unknown,Proprietary,Yes/No,No,No,~,No,Not disclosed,Unknown,Unknown,Unknown,
+Suno,2023,suno.com/,Text,Audio,2min,No,N.S.,Proprietary,Yes/No,No,*,Yes,No,Not disclosed,Unknown,Unknown,Unknown,
+Udio,2024,udio.com/,Text,Audio,30s,No,N.S.,Proprietary,Yes,No,No,*,No,Not disclosed,Unknown,Unknown,Unknown,
+WaveNet,2016,deepmind.google/discover/blog/wavenet-a-generative-model-for-raw-audio/,"Audio, None",Audio,Variable,No,Autoregressive Convolutional Neural Network,No (Yes OS Vs),No (Yes OS Vs),Community-based,Yes,Yes,Not disclosed,Raw audio waveform,Hidden State,Hierarchy Of Embeddings,"Emotion Label, Genre, Linguistic Features, Speaker Id",learns to predict raw audio samples using dilated convolution
+AFTER,2024,https://nilsdem.github.io/control-transfer-diffusion/,"Audio, MIDI",Audio,,,Latent Diffusion,,,,,,,,Latent Space Representation,"Timbre Latent Space, Structure Embedding","Timbre, Musical Structure",
+Lyria RealTime,2025,https://magenta.withgoogle.com/lyria-realtime,None,Audio,,,,,,Yes,,,,,Unknown,Unknown,"Genre, Timbre",Timbre here refers to Timbre-Semantic Prompts
