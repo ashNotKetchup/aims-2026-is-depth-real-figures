@@ -5,7 +5,8 @@ import pandas as pd
 #Diagram list
 
 # 1. Mode to mode sankey diagram (ie input mode, representation mode (including joint embedding space?), output mode) (Eg: https://www.epirhandbook.com/en/new_pages/diagrams.html#alluvialsankey-diagrams)
-# 2. dataset metadata type and how much of that gets used in training 
+# 2. audio sample, annotated to varying degrees.
+# 3. dataset metadata type and how much of that gets used in training 
 # 
 
 # %%
@@ -117,16 +118,29 @@ links['target'] = links['target'].map(node_dict)
 labels = [str(node).split(" (")[0] for node in nodes]
 labels = ["" if l == "N/S" else l for l in labels]
 
-# Use bright colors for nodes instead of monochromatic theme
+sankey_colors = {
+    'genre': '#EF553B',     
+    'timbre': '#00CC96',    
+    'musical structure': '#AB63FA',  
+    'text': '#1f77b4'
+}
+
 bright_colors = [
-    '#EF553B', '#00CC96', '#AB63FA', '#FFA15A', '#19D3F3', 
-    '#FF6692', '#B6E880', '#FF97FF', '#FECB52', '#1f77b4', 
+    '#FFA15A', '#19D3F3', 
+    '#FF6692', '#B6E880', '#FF97FF', '#1f77b4', 
     '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b'
 ]
+
 node_colors = []
+
 for i, label in enumerate(labels):
-    if label == "" or label.lower() in ["none", "unknown"]:
-        node_colors.append('#D3D3D3')  # Light gray for unknown/none
+    clean_label = label.strip().lower() if label else ""
+
+    if clean_label in ["", "none", "unknown"]:
+        node_colors.append('#D3D3D3')  # Light gray
+    elif clean_label in sankey_colors:   
+        print('colour is:', clean_label)
+        node_colors.append(sankey_colors[clean_label])
     else:
         node_colors.append(bright_colors[i % len(bright_colors)])
 
@@ -174,4 +188,3 @@ fig.update_layout(
 )
 fig.show()
 
-# %%
